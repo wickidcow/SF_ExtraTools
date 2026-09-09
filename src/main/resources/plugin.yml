@@ -1,10 +1,9 @@
 name: ExtraTools
 version: ${project.version}
-author: Sfiguz7
-description: A Slimefun4-Addon aimed at implementing useful tools
-website: https://github.com/Sfiguz7/ExtraTools
-
+authors: [Sfiguz7, wickidcow]
+description: Modern ExtraTools build for Minecraft 1.21.11+ with Slimefun Legacy-first compatibility across current Slimefun forks.
+website: https://github.com/wickidcow/SF_ExtraTools
 main: me.sfiguz7.extratools.ExtraTools
 depend: [Slimefun]
-
-api-version: 1.14
+api-version: '1.21'
+folia-supported: true

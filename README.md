@@ -1,15 +1,46 @@
-# ExtraTools
-ExtraTools is a Slimefun4 Addon I'm creating to supply useful tools which, although unnecessary, are certain to improve your Slimefun experience.
+# SF_ExtraTools
 
-These tools are a combination of suggestions from the community to which, as an experienced Slimefun player, I decided to add: merging community driven ideas and my personal take on ways to expand on them leads to a nice mix which is aimed at giving the feeling all items from this Addon are not a new branch of content but rather contribute in integrating already existing mechanics giving an overall boost in cohesion between the parts, resulting in utilities for server Staff and Slimefun dev purposes or simply making it more enjoyable to experience the great changes Slimefun4 already brings to the game.
+Maintained ExtraTools fork for modern Slimefun servers.
+
+ExtraTools adds utility tools and machines that extend existing Slimefun progression rather than creating a separate tech tree. This fork keeps the original gameplay while modernizing the project for Minecraft 1.21.11+ and current Paper-family servers.
+
+## Compatibility
+
+Primary targets:
+- Slimefun Legacy
+- Slimefun United
+
+Additional compatibility targets:
+- SlimefunGuguProject/Slimefun4
+- Original Slimefun4-compatible API implementations
+
+Server software:
+- Paper
+- Purpur
+- Folia
+- Leaf
+
+Minecraft target: **1.21.11+**. The project builds with Java 25 while targeting Java 21 bytecode.
+
+Folia support assumes the installed Slimefun implementation itself is Folia-compatible. ExtraTools does not own a global repeating Bukkit scheduler and relies on Slimefun's machine/ticker scheduling for registered machines.
+
+## No GuizhanLib dependency
+
+This fork does not directly depend on GuizhanLib and does not use GuizhanLib APIs. Compatibility with Gugu is through the shared Slimefun addon API only.
 
 ## Contents
-### Items
-- Hammer - Pulverizes cobblestone, gravel and dirt into finer pieces;
+
+### Tools
+- Hammer - pulverizes cobblestone, gravel and dirt into finer materials.
+
 ### Machines
-- Gold Transmuter - Turns SF gold into vanilla gold and vice versa;
-- Electric Composters - Like a Composter, but electric (duh!);
-- Cobblestone Generator - Passively creates cobble if powered;
-- Vaporizer - Salt and Sulfate production;
-- Concrete Factory - Turns Concrete Powder into Concrete, 8 at a time;
-- Pulverizer - Turns blocks into sand (allows cobblestone -> sand automation! No need to choose in Slimefun's config which recipe would work for the Electric Ore Grinder, you can have both with this).
+- Gold Transmuter - converts between Slimefun gold and vanilla gold.
+- Electric Composters - powered composting machines.
+- Cobblestone Generator - passively generates cobblestone while powered.
+- Vaporizer - produces salt and sulfate materials.
+- Concrete Factory - converts concrete powder into concrete in batches.
+- Pulverizer - provides an automation-friendly cobblestone-to-sand path.
+
+## Maintenance
+
+Original project by Sfiguz7. This maintained fork is published by `wickidcow` for current Slimefun ecosystems. Please report compatibility issues to this repository rather than the archived/original upstream tracker.
