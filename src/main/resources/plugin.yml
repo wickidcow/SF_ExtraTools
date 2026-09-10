@@ -1,7 +1,7 @@
 name: ExtraTools
 version: ${project.version}
 authors: [Sfiguz7, wickidcow]
-description: Modern ExtraTools build for Minecraft 1.21.11+ with Slimefun Legacy-first compatibility across current Slimefun forks.
+description: Maintained ExtraTools addon for Slimefun Legacy on Minecraft 1.21.11+ and modern Paper-family servers.
 website: https://github.com/wickidcow/SF_ExtraTools
 main: me.sfiguz7.extratools.ExtraTools
 depend: [Slimefun]
