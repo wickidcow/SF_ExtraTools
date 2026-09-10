@@ -24,56 +24,26 @@ public class Hammer extends SimpleSlimefunItem<ToolUseHandler> {
     public ToolUseHandler getItemHandler() {
         return (e, tool, fortune, drops) -> {
             if (Slimefun.getPermissionsService().hasPermission(e.getPlayer(), Hammer.this)) {
-
-                Block b = e.getBlock();
-                ItemStack drop = getDrop(b);
-
+                Block block = e.getBlock();
+                ItemStack drop = getDrop(block);
                 if (drop != null) {
-                    //Can't throw NPEs now
-                    b.getLocation().getWorld().dropItemNaturally(b.getLocation(), drop);
+                    block.getWorld().dropItemNaturally(block.getLocation(), drop);
                     e.setDropItems(false);
                 }
             }
         };
     }
 
-
-    public ItemStack getDrop(Block b) {
-
-        Material m = b.getType();
-
-        switch (m) {
-            case STONE:
-            case GRANITE:
-            case DIORITE:
-            case ANDESITE:
-            case COBBLESTONE: {
-                return new ItemStack(Material.GRAVEL);
-            }
-            case GRAVEL:
-            case GRASS_BLOCK:
-            case DIRT:
-            case COARSE_DIRT:
-            case PODZOL: {
-                return new ItemStack(Material.SAND);
-            }
-            case IRON_ORE:
-            case DEEPSLATE_IRON_ORE: {
-                return SlimefunItems.IRON_DUST;
-            }
-            case GOLD_ORE:
-            case DEEPSLATE_GOLD_ORE: {
-                return SlimefunItems.GOLD_DUST;
-            }
-            case COPPER_ORE:
-            case DEEPSLATE_COPPER_ORE: {
-                return SlimefunItems.COPPER_DUST;
-            }
-            case NETHERRACK: {
-                return new ItemStack(Material.SOUL_SAND);
-            }
-        }
-
-        return null;
+    public ItemStack getDrop(Block block) {
+        return switch (block.getType()) {
+            case STONE, GRANITE, DIORITE, ANDESITE, COBBLESTONE,
+                 DEEPSLATE, COBBLED_DEEPSLATE, TUFF, CALCITE -> new ItemStack(Material.GRAVEL);
+            case GRAVEL, GRASS_BLOCK, DIRT, COARSE_DIRT, PODZOL -> new ItemStack(Material.SAND);
+            case IRON_ORE, DEEPSLATE_IRON_ORE -> SlimefunItems.IRON_DUST;
+            case GOLD_ORE, DEEPSLATE_GOLD_ORE -> SlimefunItems.GOLD_DUST;
+            case COPPER_ORE, DEEPSLATE_COPPER_ORE -> SlimefunItems.COPPER_DUST;
+            case NETHERRACK -> new ItemStack(Material.SOUL_SAND);
+            default -> null;
+        };
     }
 }
