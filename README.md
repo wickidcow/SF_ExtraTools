@@ -24,9 +24,9 @@ Minecraft target: **1.21.11+**. The project builds with Java 25 while targeting 
 
 Folia support assumes the installed Slimefun implementation itself is Folia-compatible. ExtraTools does not own a global repeating Bukkit scheduler and relies on Slimefun's machine/ticker scheduling for registered machines.
 
-## No GuizhanLib dependency
+## Dependency policy
 
-This fork does not directly depend on GuizhanLib and does not use GuizhanLib APIs. Compatibility with Gugu is through the shared Slimefun addon API only.
+This maintained fork avoids external Slimefun utility-library dependencies. Gugu compatibility is provided only through the shared Slimefun addon API.
 
 ## Contents
 
