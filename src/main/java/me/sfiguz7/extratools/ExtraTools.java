@@ -1,7 +1,9 @@
 package me.sfiguz7.extratools;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
+import java.util.List;
 import me.sfiguz7.extratools.implementation.machines.CobblestoneGenerator;
 import me.sfiguz7.extratools.implementation.machines.ConcreteFactory;
 import me.sfiguz7.extratools.implementation.machines.ElectricComposter;
@@ -16,6 +18,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class ExtraTools extends JavaPlugin implements SlimefunAddon {
 
+    private static final List<String> CANONICAL_ITEM_IDS = List.of(
+        "HAMMER",
+        "GOLD_TRANSMUTER",
+        "ELECTRIC_COMPOSTER",
+        "ELECTRIC_COMPOSTER_2",
+        "COBBLESTONE_GENERATOR",
+        "VAPORIZER",
+        "CONCRETE_FACTORY",
+        "PULVERIZER"
+    );
+
     private static ExtraTools instance;
     private int researchId = 4100;
 
@@ -23,6 +36,14 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
         instance = this;
         saveDefaultConfig();
+
+        if (hasIntegratedExtraToolsContent()) {
+            getLogger().info(
+                "Detected ExtraTools content already registered by Slimefun Legacy; "
+                    + "skipping standalone ExtraTools item registration to prevent duplicates."
+            );
+            return;
+        }
 
         new Metrics(this, 6945);
 
@@ -77,6 +98,17 @@ public class ExtraTools extends JavaPlugin implements SlimefunAddon {
         new Pulverizer().register(this);
         new Research(new NamespacedKey(this, "pulverizer"), ++researchId, "Pulverizer", 18)
             .addItems(ETItems.PULVERIZER).register();
+    }
+
+    private boolean hasIntegratedExtraToolsContent() {
+        for (String id : CANONICAL_ITEM_IDS) {
+            if (SlimefunItem.getById(id) != null) {
+                getLogger().info("Found pre-registered ExtraTools item id: " + id);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
